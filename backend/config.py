@@ -9,7 +9,9 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    DATABASE_URL: PostgresDsn
+    DATABASE_URL: PostgresDsn = PostgresDsn(
+        "postgresql+asyncpg://postgres:postgres@localhost:5432/student_council"
+    )
     ECHO_DB: bool = False
 
 
