@@ -21,42 +21,59 @@
 - **Infrastructure:** Docker, GitHub Actions (CI/CD)
 
 ## 🗂 Структура репозиторію
-\`\`\`text
+```text
 ├── frontend/          # Клієнтська частина сайту (React)
 ├── backend/           # API та бізнес-логіка (FastAPI)
 ├── admin/             # Закрита панель для управління контентом
 └── docs/              # Технічна документація для розробників
-\`\`\`
+```
 
 ## 🚀 Локальний запуск
 
 ### Попередні вимоги
-- Встановлений [Node.js](https://nodejs.org/) (v18+)
-- Встановлений [Python](https://www.python.org/) (3.10+)
+- Встановлений [Node.js](https://nodejs.org/) (v18+) — *опціонально, якщо без Docker*
+- Встановлений [Python](https://www.python.org/) (3.10+) — *опціонально, якщо без Docker*
 - Встановлений та запущений [Docker](https://www.docker.com/)
 
 ### Крок 1. Клонування репозиторію
-\`\`\`bash
+```bash
 git clone https://github.com/lnu-it-committee/student_council_website.git
 cd student_council_website
-\`\`\`
+```
 
-### Крок 2. Налаштування Backend
-\`\`\`bash
+### Варіант А: Швидкий запуск через Docker (Рекомендовано)
+Не потребує локального встановлення Python, Node.js чи PostgreSQL — достатньо мати запущений Docker:
+```bash
+docker compose up -d --build
+```
+Після запуску сервіси будуть доступні за адресами:
+- **Frontend:** `http://localhost:3000`
+- **Backend API:** `http://localhost:8000` (Swagger UI: `http://localhost:8000/docs`)
+- **PostgreSQL:** `localhost:5432` (дані зберігаються у Docker volume `postgres_data`)
+
+Щоб зупинити контейнери:
+```bash
+docker compose down
+```
+
+### Варіант Б: Ручний запуск без Docker
+
+#### Крок 2. Налаштування Backend
+```bash
 cd backend
 python -m venv venv
 source venv/bin/activate  # Для Windows: venv\Scripts\activate
 pip install -r requirements.txt
 cp .env.example .env      # Додайте свої локальні ключі
 uvicorn main:app --reload
-\`\`\`
+```
 
-### Крок 3. Налаштування Frontend
-\`\`\`bash
+#### Крок 3. Налаштування Frontend
+```bash
 cd frontend
 npm install
 npm run dev
-\`\`\`
+```
 Сайт буде доступний за адресою: `http://localhost:3000`
 
 ## 🤝 Як зробити внесок (Contributing)
@@ -64,9 +81,9 @@ npm run dev
 
 1. Перейдіть на дошку задач (GitHub Projects) і візьміть Issue у роботу.
 2. Створіть нову гілку від `main` (формат: `feat/nazva-fichi`, `bugfix/nazva-bagu` або `docs/opys`).
-   \`\`\`bash
+   ```bash
    git checkout -b feat/add-contact-form
-   \`\`\`
+   ```
 3. Зробіть коміти з описом змін (використовуйте [Conventional Commits](https://www.conventionalcommits.org/)).
 4. Запуште гілку та створіть Pull Request.
 5. Позначте (Request Review) відповідну команду рев'юерів (`@lnu-it-committee/frontend`, `@lnu-it-committee/backend` або `@lnu-it-committee/qa`).

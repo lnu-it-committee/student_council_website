@@ -92,7 +92,6 @@ dist/
 
 # INFRASTRUCTURE & DATABASE (Docker, PostgreSQL)
 # Docker
-.dockerignore
 docker-compose.override.yml
 *.sqldump
 *.dump
