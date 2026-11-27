@@ -6,12 +6,11 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
-        extra = "ignore"
+        extra="ignore",
     )
 
-    DATABASE_URL :PostgresDsn
-    ECHO_DB : bool = False
+    DATABASE_URL: PostgresDsn
+    ECHO_DB: bool = False
 
 
-
-settings : Settings = Settings()
+settings: Settings = Settings()
